@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBSTRATUM | Texas Investigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --investigation-color: #ffbf00;
+            --neon-cyan: #00ffff;
+            --bg-dark: #0a0a0a;
+            --text-primary: #e6e6e6;
+            --text-muted: #888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg-dark);
+            min-height: 100vh;
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            color: var(--neon-cyan);
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--text-muted);
+            font-family: 'VT323', monospace;
+        }
+        .nav-back:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+        .investigation-header {
+            background: linear-gradient(180deg, rgba(13, 17, 23, 0.98), rgba(10, 10, 10, 0.99));
+            border-bottom: 2px solid var(--investigation-color);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .investigation-title {
+            font-family: 'VT323', monospace;
+            font-size: 2.5rem;
+            color: var(--investigation-color);
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--investigation-color);
+        }
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            font-family: 'VT323', monospace;
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            margin: 35px 0 18px 0;
+        }
+        h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+            color: var(--investigation-color);
+            margin: 25px 0 15px 0;
+        }
+        p { margin-bottom: 20px; font-size: 1.15rem; }
+        strong { color: var(--investigation-color); }
+        ul { margin: 20px 0 20px 40px; }
+        li { margin-bottom: 12px; }
+        .debug-console {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-height: 400px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid var(--investigation-color);
+            padding: 15px;
+            font-family: 'VT323', monospace;
+            overflow-y: auto;
+            display: none;
+            z-index: 9998;
+        }
+        .debug-console.show { display: block; }
+        .debug-header {
+            color: var(--investigation-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+        .debug-entry {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--investigation-color);
+        }
+        .debug-entry.error { border-left-color: #ff6b6b; color: #ff6b6b; }
+        .debug-entry.success { border-left-color: #39ff14; color: #39ff14; }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="../index.html" class="nav-brand">◈ SUBSTRATUM</a>
+        <a href="../tavern.html" class="nav-back">← Return to Tavern</a>
+    </nav>
+    
+    <div class="investigation-header">
+        <h1 class="investigation-title">TEXAS INVESTIGATION</h1>
+        <p style="color: var(--text-muted); font-style: italic;">97% Through MCOs, 5-15% Recovery Rate</p>
+    </div>
+    
+    <div class="content-wrapper">
+        <h2>EXECUTIVE SUMMARY</h2>
+        <p>Texas replicates the identical fraud patterns, oversight failures, and political protection mechanisms documented in Minnesota and California, with an estimated <strong>$4 billion in annual fraud losses</strong> against a paltry <strong>5-15% recovery rate</strong>.</p>
+        
+        <p>The state's $41 billion Medicaid managed care system—channeling <strong>97% of beneficiaries through 16 MCOs</strong>—demonstrates the same structural vulnerabilities enabling organized fraud networks to extract billions while political connections shield both fraudsters and negligent MCOs from accountability.</p>
+
+        <h2>MCO OVERSIGHT COLLAPSE</h2>
+        <p><strong>CMS July 2025 Review Found:</strong></p>
+        <ul>
+            <li>All 4 major MCOs failed to conduct unannounced site visits</li>
+            <li>No SIU staffing ratios to member population</li>
+            <li>No beneficiary verification requirements</li>
+            <li>HHSC-OIG doesn't track MCO-to-MFCU referrals</li>
+            <li>Deficient corrective action plan policies</li>
+        </ul>
+
+        <p><strong>Overpayment Recovery Rates:</strong></p>
+        <ul>
+            <li>Amerigroup: Identified $26.8M, recovered $5.5M (20.5%)</li>
+            <li>Superior HealthPlan: Identified $13.6M, recovered $3.1M (22.8%)</li>
+            <li><strong>~80% of identified overpayments go unrecovered</strong></li>
+        </ul>
+
+        <h2>MAJOR FRAUD CASES</h2>
+        <h3>Hospice: The Merida Group ($150M)</h3>
+        <ul>
+            <li>Owner Rodney Mesquias: 20 years, $120M restitution</li>
+            <li>Falsely certified Alzheimer's patients as terminal</li>
+            <li>Kept patients on hospice for years to maximize revenue</li>
+        </ul>
+
+        <h3>Pharmacy: 4M Pharmaceuticals ($160M)</h3>
+        <ul>
+            <li>Mohamad Mokbel operated 14 pharmacies with straw owners</li>
+            <li>Purchased Medicare beneficiary data for $16-$40 per person</li>
+            <li>Call center in Egypt generating fraudulent prescriptions</li>
+            <li>$188,000 in bribes to OptumRx employee</li>
+        </ul>
+
+        <h3>Compound Cream: Nourian Scheme ($405M Forfeiture)</h3>
+        <ul>
+            <li>Largest healthcare fraud asset forfeiture in DOJ history</li>
+            <li>Dehshid Nourian: 17.5 years, $115M restitution</li>
+            <li>$395M seized from brokerage accounts</li>
+            <li>Dallas and Austin real estate forfeited</li>
+        </ul>
+
+        <h2>POLITICAL PROTECTION: CENTENE MODEL</h2>
+        <h3>Pay-to-Play Timeline</h3>
+        <ul>
+            <li><strong>July 2022:</strong> Centene signs $165.6M fraud settlement with Texas</li>
+            <li><strong>Sept 2022:</strong> Texas renews Superior HealthPlan's contract</li>
+            <li><strong>March 2025:</strong> CEO admits hiring private investigators to surveil legislators</li>
+            <li><strong>March 2025:</strong> CEO fired; AG Paxton launches investigation</li>
+        </ul>
+
+        <p>Centene has given <strong>$26.9 million to state politicians</strong> across 33 states since 2015, deploying 300+ subsidiaries to multiply political donations.</p>
+
+        <h3>The 21CT Contracting Scandal ($20M)</h3>
+        <ul>
+            <li>Jack Stick (HHSC Deputy IG): Former business partner with 21CT lobbyist; resigned</li>
+            <li>Douglas Wilson (HHSC IG): Fired by Governor Perry</li>
+            <li>Erica Stick (Chief of Staff): Placed on leave from $161K job</li>
+            <li>21CT CEO donated $10,000 to Abbott's campaign (returned after scandal)</li>
+        </ul>
+
+        <h2>INTERNATIONAL MONEY FLOWS</h2>
+        <ul>
+            <li><strong>India:</strong> $41.2M recovered (Reddy case - 200+ bank accounts)</li>
+            <li><strong>Egypt:</strong> Call center operations (Mokbel)</li>
+            <li><strong>Dubai, UAE:</strong> $2.9M (golf estate purchase)</li>
+            <li><strong>Pakistan:</strong> Marketing/billing companies</li>
+        </ul>
+
+        <h2>INSTITUTIONAL FAILURES</h2>
+        <h3>MCO Special Investigative Units</h3>
+        <p><strong>Wellpoint Texas</strong> (processing $12.8B in claims) recovered only <strong>$426,467</strong>—a recovery rate of <strong>0.003%</strong>.</p>
+        
+        <h3>State Auditor Findings</h3>
+        <p>Evaluation errors in <strong>all 28 procurements</strong> totaling <strong>$4.6 billion</strong>. For 5 procurements exceeding $3B, auditor couldn't confirm HHSC awarded contracts to best applicants.</p>
+
+        <h3>Federal HHS-OIG Findings</h3>
+        <p>Texas failed to correctly report <strong>$24.3 million</strong> for 65 MFCU cases. For 26 cases, Texas simply <strong>did not report $19.0 million</strong> in overpayments.</p>
+
+        <h2>RECOVERY RATES</h2>
+        <ul>
+            <li>Texas Medicaid annual budget: $40-48 billion</li>
+            <li>Estimated fraud (10% standard): <strong>$4+ billion</strong></li>
+            <li>MFCU recovery FY 2023: $203 million</li>
+            <li>MFCU recovery FY 2022: $350 million</li>
+            <li><strong>Effective recovery rate: 5-15%</strong></li>
+        </ul>
+
+        <h2>COMPARATIVE MATRIX</h2>
+        <p>Texas replicates every structural failure documented in Minnesota and California:</p>
+        <ul>
+            <li>97% Medicaid through MCOs (vs 80%+ in MN/CA)</li>
+            <li>MCO fraud referral deficiencies (CMS confirmed)</li>
+            <li>Site visit requirements ignored (all 4 MCOs failed)</li>
+            <li>Low overpayment recovery (20-23%)</li>
+            <li>Political donations from MCOs</li>
+            <li>Contract awards despite fraud settlements</li>
+            <li>International money flows</li>
+            <li>Fraud recovery rate <10%</li>
+            <li>Revolving door (21CT scandal)</li>
+            <li>COVID waiver abuse</li>
+        </ul>
+
+        <h2>SOURCES</h2>
+        <ul>
+            <li>CMS Focused Program Integrity Review (July 2025)</li>
+            <li>DOJ Press Releases (Southern District of Texas)</li>
+            <li>Texas State Auditor Reports</li>
+            <li>Federal HHS-OIG Audit Reports</li>
+            <li>KFF Health News Analysis</li>
+            <li>House Committee Testimony (March 2025)</li>
+        </ul>
+    </div>
+    
+    <div class="debug-console" id="debug-console">
+      <div class="debug-header" id="debug-header">DEBUG: TEXAS INVESTIGATION</div>
+      <div id="debug-output"></div>
+    </div>
+
+<script src="/cases/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "id": "Guy_4",
+  "state": "Illinois",
+  "meta": {
+    "section": "Illinois",
+    "title": "The Capitation Necromancer",
+    "case_file": "illinois.txt"
+  },
+  "persona": "Vibe: auditor-mage who can summon 'deceased capitation' from the void. Humor style: bureaucratic sarcasm, loves dunking on 'missing contracts'. Proud of Illinois OIG analytics… furious at PBM opacity. Treats every middleman like a suspect with a polished LinkedIn.",
+  "lines": [
+    "PLAYER: You look like you're hunting ghosts.",
+    "GUY_4: I am. Illinois literally paid managed-care premiums for dead people. I'm just the guy holding the Ouija board.",
+    "PLAYER: Illinois Medicaid - what's the structure?",
+    "GUY_4: HealthChoice Illinois. Near-universal managed care. Five major MCOs and a state agency trying to keep the machine from eating the manual.",
+    "PLAYER: What's the fraud angle?",
+    "GUY_4: Two big ones: pharmacy money games and enrollment reality lag.",
+    "PLAYER: Explain.",
+    "GUY_4: PBM spread pricing. Auditor General found over $200 million in spread overbilling across two years. The state didn't even have complete MCO-PBM contracts on file.",
+    "PLAYER: They didn't have the contracts?",
+    "GUY_4: Correct. Illinois was auditing a deal it wasn't allowed to read. Very 'trust fall' energy.",
+    "PLAYER: And the dead people?",
+    "GUY_4: Illinois OIG used analytics to claw back $16.3 million in FY 2025 in capitation paid for deceased recipients. That money existed only because enrollment data and payment systems weren't reconciling fast enough.",
+    "PLAYER: What about classic provider fraud?",
+    "GUY_4: Plenty. Lateena Smith billed $2.46 million in psychotherapy sessions that never happened using Medicaid identities. A COVID lab scheme billed $293 million; $65 million was paid before the indictment.",
+    "PLAYER: Sounds like Illinois catches a lot though.",
+    "GUY_4: They do. OIG reported $51.9 million in collections and $142.5 million in questioned costs in FY 2025. They're good at post-payment enforcement.",
+    "PLAYER: Then what's the problem?",
+    "GUY_4: Prevention. Transparency. And a Managed Care Oversight Commission that missed meetings because it couldn't find a quorum.",
+    "PLAYER: Your summary?",
+    "GUY_4: Illinois can find the fraud after the money leaves the barn. But until PBM contracts and data reconciliation are real-time and visible, the barn door stays decorative.",
+    "PLAYER: You're harsh.",
+    "GUY_4: I'm from Illinois. Harsh is our love language."
+  ],
+  "actions": [
+    {
+      "text": "Open Case File",
+      "url": "/cases/il_fraud.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

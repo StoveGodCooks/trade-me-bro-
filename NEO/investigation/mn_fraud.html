@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBSTRATUM | Minnesota Investigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --investigation-color: #00d4ff;
+            --neon-cyan: #00ffff;
+            --bg-dark: #0a0a0a;
+            --text-primary: #e6e6e6;
+            --text-muted: #888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg-dark);
+            min-height: 100vh;
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            color: var(--neon-cyan);
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--text-muted);
+            font-family: 'VT323', monospace;
+        }
+        .nav-back:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+        .investigation-header {
+            background: linear-gradient(180deg, rgba(13, 17, 23, 0.98), rgba(10, 10, 10, 0.99));
+            border-bottom: 2px solid var(--investigation-color);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .investigation-title {
+            font-family: 'VT323', monospace;
+            font-size: 2.5rem;
+            color: var(--investigation-color);
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--investigation-color);
+        }
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            font-family: 'VT323', monospace;
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            margin: 35px 0 18px 0;
+        }
+        h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+            color: var(--investigation-color);
+            margin: 25px 0 15px 0;
+        }
+        p { margin-bottom: 20px; font-size: 1.15rem; }
+        strong { color: var(--investigation-color); }
+        ul { margin: 20px 0 20px 40px; }
+        li { margin-bottom: 12px; }
+        .debug-console {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-height: 400px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid var(--investigation-color);
+            padding: 15px;
+            font-family: 'VT323', monospace;
+            overflow-y: auto;
+            display: none;
+            z-index: 9998;
+        }
+        .debug-console.show { display: block; }
+        .debug-header {
+            color: var(--investigation-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+        .debug-entry {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--investigation-color);
+        }
+        .debug-entry.error { border-left-color: #ff6b6b; color: #ff6b6b; }
+        .debug-entry.success { border-left-color: #39ff14; color: #39ff14; }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="../index.html" class="nav-brand">◈ SUBSTRATUM</a>
+        <a href="../tavern.html" class="nav-back">← Return to Tavern</a>
+    </nav>
+    
+    <div class="investigation-header">
+        <h1 class="investigation-title">MINNESOTA INVESTIGATION</h1>
+        <p style="color: var(--text-muted); font-style: italic;">The $9 Billion Scandal</p>
+    </div>
+    
+    <div class="content-wrapper">
+        <h2>EXECUTIVE SUMMARY</h2>
+        <p>Between 2020-2025, Minnesota experienced one of the largest documented Medicaid fraud scandals in U.S. history—a <strong>$9+ billion theft</strong> revealing comprehensive systemic failure across criminal, political, bureaucratic, judicial, and oversight systems simultaneously.</p>
+        
+        <p><strong>The Numbers:</strong></p>
+        <ul>
+            <li>Total Documented Fraud: <strong>$9 billion+</strong></li>
+            <li>Total Estimated (including MCO): <strong>$28 billion+</strong></li>
+            <li>Convicted: <strong>100+</strong></li>
+            <li>Recovered: <strong>&lt;$70 million</strong></li>
+            <li>Recovery Rate: <strong>&lt;1%</strong></li>
+            <li>Whistleblowers Retaliated: <strong>480+</strong></li>
+        </ul>
+
+        <h2>THE FRAUD MECHANISM</h2>
+        <h3>Channel 1: Direct DHS Payments (20%)</h3>
+        <p><strong>Feeding Our Future:</strong> $250M-$350M stolen through fake nonprofits claiming to serve meals to children. 250+ shell entities submitted fraudulent reimbursement requests with no actual meal service.</p>
+        
+        <h3>Channel 2: MCO Capitation (80%)</h3>
+        <p>The critical blindspot: <strong>$8 billion annually</strong> flows through MCOs with <strong>zero independent audit</strong>. MCOs audit themselves. Estimated MCO fraud: <strong>$5-10 billion</strong>.</p>
+
+        <h2>THE OVERSEAS MONEY TRAIL</h2>
+        <ul>
+            <li><strong>China:</strong> $1.1M+ (unrecoverable) - Najmo Ahmed to textile companies</li>
+            <li><strong>Somalia:</strong> $1M+ (terror investigation) - Abdiaziz Farah; Treasury investigating Al-Shabaab links</li>
+            <li><strong>Kenya:</strong> $3M+ (partially traceable) - Ahmednaji Sheikh indicted</li>
+            <li><strong>Maldives:</strong> $500K+ (unrecoverable) - Abdimajid Nur honeymoon transfers</li>
+        </ul>
+
+        <h2>THE POLITICAL PROTECTION RACKET</h2>
+        <h3>The Ellison Meeting (Dec 11, 2021)</h3>
+        <p>Attorney General Keith Ellison met privately with fraudster Abdiaziz Farah (audio recorded, Defense Exhibit 710). <strong>9 days later</strong>, Farah donated $10,000+ to Ellison's campaign.</p>
+        
+        <h3>Campaign Donations</h3>
+        <ul>
+            <li>Liban Alishire → AG Ellison: $2,500 (returned after pressure)</li>
+            <li>Farah & associates → Ellison: $10,000+ (not returned)</li>
+            <li>FOF defendants → Sen. Omar Fateh: $11,000+ (returned after court pressure)</li>
+        </ul>
+
+        <h2>KEY PERPETRATORS</h2>
+        <ul>
+            <li><strong>Abdiaziz Shafii Farah:</strong> 28 years, $48M stolen, Somalia/Kenya transfers</li>
+            <li><strong>Abdimajid Nur:</strong> 10 years, $48M stolen, Maldives transfers</li>
+            <li><strong>Najmo Ahmed:</strong> Pleaded guilty Feb 2025, $4.2M stolen, China transfers</li>
+            <li><strong>Asha Hassan:</strong> Pleaded guilty Dec 2025, $14M autism fraud, Kenya transfers</li>
+            <li><strong>Abdifatah Yusuf:</strong> Conviction OVERTURNED Nov 2025 by Judge West, $7.2M housing fraud</li>
+        </ul>
+
+        <h2>THE MCO AUDIT BLINDSPOT</h2>
+        <p>Governor Walz hired Optum (UnitedHealth subsidiary) as auditor. Optum audit covers only 20% of Medicaid. The remaining 80% ($8B annually) through MCOs has zero independent oversight.</p>
+        
+        <p><strong>2020 MCO Capitation:</strong></p>
+        <ul>
+            <li>UCare: $2.83B</li>
+            <li>Blue Plus: $2.33B</li>
+            <li>HealthPartners: $1.26B</li>
+            <li>Medica: $1.15B</li>
+            <li><strong>Total: $8.0 billion unaudited</strong></li>
+        </ul>
+
+        <h2>TIMELINE</h2>
+        <ul>
+            <li><strong>July 2019:</strong> MDE identifies fraud indicators</li>
+            <li><strong>Feb 2021:</strong> FBI opens investigation (14 months later)</li>
+            <li><strong>Dec 11, 2021:</strong> Ellison-Farah meeting</li>
+            <li><strong>Dec 20, 2021:</strong> $10K+ donation (9 days after meeting)</li>
+            <li><strong>Jan 2022:</strong> FBI raids; 47 charged</li>
+            <li><strong>Aug 2025:</strong> Farah sentenced to 28 years</li>
+            <li><strong>Nov 2025:</strong> Judge West overturns Yusuf conviction</li>
+            <li><strong>Dec 2025:</strong> Treasury announces Al-Shabaab investigation</li>
+            <li><strong>Jan 2026:</strong> House Oversight hearing; subpoenas to Walz and Ellison</li>
+        </ul>
+
+        <h2>SOURCES</h2>
+        <ul>
+            <li>DOJ Press Releases (District of Minnesota)</li>
+            <li>Federal Court Records (PACER)</li>
+            <li>Treasury Department/FinCEN Statements</li>
+            <li>Minnesota Legislative Auditor Reports</li>
+            <li>House Oversight Committee Hearings</li>
+            <li>Defense Exhibit 710 (audio recording)</li>
+            <li>Minnesota Campaign Finance Board Records</li>
+        </ul>
+    </div>
+    
+    <div class="debug-console" id="debug-console">
+        <div class="debug-header">DEBUG: MINNESOTA INVESTIGATION</div>
+        <div id="debug-output"></div>
+    </div>
+    
+    <script>
+        const DEBUG = {
+            logs: [],
+            init() {
+                this.log('✓ Minnesota investigation loaded', 'success');
+                this.checkIntegrity();
+                this.monitorErrors();
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'd' || e.key === 'D') {
+                        document.getElementById('debug-console').classList.toggle('show');
+                    }
+                });
+            },
+            log(msg, type = 'info') {
+                this.logs.push({msg, type, time: new Date().toLocaleTimeString()});
+                this.render();
+            },
+            checkIntegrity() {
+                const checks = [
+                    {name: 'Navigation', test: () => document.querySelector('.nav-brand')},
+                    {name: 'Content', test: () => document.querySelector('.content-wrapper')},
+                    {name: 'Headers', test: () => document.querySelectorAll('h2').length >= 6}
+                ];
+                checks.forEach(c => {
+                    if (c.test()) this.log(`✓ ${c.name}`, 'success');
+                    else this.log(`✗ ${c.name} FAILED`, 'error');
+                });
+            },
+            monitorErrors() {
+                window.addEventListener('error', (e) => {
+                    this.log(`ERROR: ${e.message}`, 'error');
+                });
+            },
+            render() {
+                document.getElementById('debug-output').innerHTML = this.logs.map(l => 
+                    `<div class="debug-entry ${l.type}"><small>${l.time}</small><br>${l.msg}</div>`
+                ).join('');
+            }
+        };
+        document.addEventListener('DOMContentLoaded', () => DEBUG.init());
+    </script>
+</body>
+</html>

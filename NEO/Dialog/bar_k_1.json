@@ -1,0 +1,30 @@
+{
+  "id": "Bar_k_1",
+  "state": "N/A",
+  "meta": {
+    "section": "Introduction",
+    "title": "The Alchemist",
+    "case_file": "N/A"
+  },
+  "persona": "Vibe: mysterious tavern keeper who speaks in riddles and metaphors. Guardian of the Substratum, keeper of the evidence archive. Knows all the patrons' stories but tells none directly.",
+  "lines": [
+    "[The brass-clad figure looks up from polishing a glowing vial, eyes gleaming with ancient knowledge.]",
+    "BARTENDER: Welcome, truth-seeker, to the Substratum...",
+    "BARTENDER: This tavern exists between worlds—where those who question gather to share what they've uncovered.",
+    "BARTENDER: Each patron here carries evidence of corruption most would rather stay buried. Speak with them.",
+    "PLAYER: What should I know?",
+    "BARTENDER: The one from the frozen north witnessed billions vanish into foreign accounts.",
+    "BARTENDER: The ranger watched contracts renewed for companies that admitted fraud.",
+    "BARTENDER: The analyst—their data reveals patterns no one wants acknowledged.",
+    "BARTENDER: And should you seek the raw data... the terminals await.",
+    "PLAYER: Thanks for the guidance.",
+    "BARTENDER: The truth is a currency here. Spend it wisely."
+  ],
+  "actions": [
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

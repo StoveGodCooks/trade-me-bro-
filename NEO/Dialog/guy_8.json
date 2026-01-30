@@ -1,0 +1,23 @@
+{
+  "id": "Guy_8",
+  "state": "TBD",
+  "meta": {
+    "section": "Coming Soon",
+    "title": "The [Title Pending]",
+    "case_file": "TBD.txt"
+  },
+  "persona": "This character's investigation is still being compiled.",
+  "lines": [
+    "PLAYER: Hey there, what's your story?",
+    "GUY_8: My story is still being written. Check back soon - I've got evidence to gather.",
+    "PLAYER: Fair enough.",
+    "GUY_8: The truth takes time to document properly. But when I'm ready, you'll want to hear what I've uncovered."
+  ],
+  "actions": [
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

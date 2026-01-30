@@ -1,0 +1,56 @@
+{
+  "id": "Guy_2",
+  "state": "Texas",
+  "meta": {
+    "section": "Texas",
+    "title": "The Lone Star Claims Wrangler",
+    "case_file": "texas_medicaid_fraud_report.txt"
+  },
+  "persona": "Vibe: friendly on the surface, knife-sharp about incentives. Humor style: cowboy metaphors, corporate-speak mockery, cheerful pessimism. Obsessed with recovery rates and staffing ratios. Thinks 'managed care' is mostly 'managed optics' unless you measure it.",
+  "lines": [
+    "PLAYER: You look like you're about to tell me a horror story with a smile.",
+    "GUY_2: Partner, in Texas we do everything big. Including the fraud.",
+    "PLAYER: What's the headline?",
+    "GUY_2: Texas Medicaid runs about a $41 billion annual system. And it routes 97% of beneficiaries through 16 Managed Care Organizations.",
+    "PLAYER: Sounds efficient.",
+    "GUY_2: It's efficient at moving money. Detecting fraud is… more of a hobby.",
+    "PLAYER: How bad is it?",
+    "GUY_2: The case file estimates around $4 billion in annual fraud losses. Recovery rates? Somewhere between 5% and 15% of what gets stolen.",
+    "PLAYER: Why so low?",
+    "GUY_2: Incentives. MCOs get capitation. Higher costs can justify higher rates. Fraud inflates costs. Nobody's excited to reduce their own baseline.",
+    "PLAYER: Any proof this is structural?",
+    "GUY_2: July 2025 CMS focused review. Four big MCOs. Eight major 'observations' that read like a tutorial on how not to run program integrity.",
+    "PLAYER: Like what?",
+    "GUY_2: Special Investigative Units understaffed. No proper staffing ratios for the member populations.",
+    "GUY_2: State law conflicts with federal payment-suspension rules, so the Fraud Control Unit hasn't requested a single payment suspension since 2015.",
+    "PLAYER: Ten years with zero suspensions?",
+    "GUY_2: Yep. Imagine catching a leak and deciding the fix is to stare at it harder.",
+    "PLAYER: Anything else?",
+    "GUY_2: No unannounced site visits. Ever, per the review. That's how you catch phantom clinics. Texas said, 'Nah, let them surprise us instead.'",
+    "GUY_2: Also: no requirement to verify beneficiaries actually got the services billed. Which is… a bold approach to reality.",
+    "PLAYER: What about referrals to law enforcement?",
+    "GUY_2: The state OIG doesn't even track MCO referrals to the Fraud Control Unit. So the state can't tell whether MCOs are reporting fraud or just quietly denying claims and moving on.",
+    "PLAYER: Give me a recovery-rate gut punch.",
+    "GUY_2: One plan processed $12.8B in claims and recovered $426,467. That's 0.003%.",
+    "PLAYER: That's basically… nothing.",
+    "GUY_2: It's a rounding error wearing a cowboy hat.",
+    "PLAYER: Any others?",
+    "GUY_2: Amerigroup identified $26.8M over three years, recovered $5.5M. Superior identified $13.6M, recovered $3.1M. Parkland had 12 preliminary investigations and hit the 15-workday federal deadline exactly zero times.",
+    "PLAYER: So what's the fix?",
+    "GUY_2: Treat fraud as an emergency, not a paperwork mood. Staff the SIUs. Do unannounced visits. Verify services. Fix the payment-suspension conflict so the system can actually stop bleeding.",
+    "PLAYER: You make it sound simple.",
+    "GUY_2: It is simple. It's just inconvenient for people who prefer profits to accountability. Texas has a long tradition of respecting… convenience."
+  ],
+  "actions": [
+    {
+      "text": "Open Case File",
+      "url": "/cases/tx_fraud.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

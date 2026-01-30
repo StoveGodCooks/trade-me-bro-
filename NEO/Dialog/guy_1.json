@@ -1,0 +1,53 @@
+{
+  "id": "Guy_1",
+  "state": "Minnesota",
+  "meta": {
+    "section": "Minnesota",
+    "title": "The Frost Witness",
+    "case_file": "MN.txt"
+  },
+  "persona": "Vibe: investigative whistleblower energy with a winter-cold stare. Humor: dry, 'I'm not mad, I'm disappointed' sarcasm. Knows the receipts: quotes numbers, channels, and choke points like a walking audit report. Bias: allergic to 'we fixed it' statements without independent audits.",
+  "lines": [
+    "PLAYER: You look like you've been through a blizzard.",
+    "GUY_1: Minnesota. Same thing. Except the blizzard is paperwork and the snow is missing money.",
+    "PLAYER: What happened here?",
+    "GUY_1: The case file calls it a $9+ billion Medicaid fraud scandal between 2020 and 2025. 'One of the largest documented' in U.S. history.",
+    "PLAYER: Nine… billion?",
+    "GUY_1: Yes. Billion. With a B. Recovery? Under $70 million. That's less than 1%.",
+    "PLAYER: How do you lose that much?",
+    "GUY_1: Two channels. That's the whole trick.",
+    "GUY_1: Channel 1 is direct state payments - about 20% of spending, roughly $1.9B a year. Visible. Audited.",
+    "GUY_1: Channel 2 is MCO capitation - about 80% of spending, around $8B a year. Not independently audited in the big state audit. The MCOs audit themselves.",
+    "PLAYER: So fraud can hide in the big bucket.",
+    "GUY_1: Exactly. And while everyone's staring at the 20% bucket like it's the whole ocean, the other 80% is doing synchronized swimming.",
+    "PLAYER: What's the 'famous' scheme?",
+    "GUY_1: Feeding Our Future. Fake nonprofits. Fake meals. Real money. Estimates in the file put it $250M to $350M.",
+    "PLAYER: How did they pull that off?",
+    "GUY_1: They created shell nonprofits, enrolled them, then billed for ridiculous meal counts. Minimal verification. Payments in weeks. Then the money left the country.",
+    "PLAYER: Left the country how?",
+    "GUY_1: Wire transfers and laundering. Countries named in the case file include Somalia, Kenya, Turkey, the Maldives, and China. The file says likely billions went overseas.",
+    "PLAYER: That's… not subtle.",
+    "GUY_1: Fraud at scale isn't subtle. It's confident. Like it knows the system won't bite.",
+    "PLAYER: Did the system bite?",
+    "GUY_1: Eventually. But the file argues there was political protection: donations, pressure, whistleblower retaliation - 480 plus, per the document. Political accountability? Zero charged.",
+    "PLAYER: Who got charged?",
+    "GUY_1: Lots of defendants. 150+ charged, 100+ convicted. But that's mostly the street-level and mid-level operators.",
+    "PLAYER: So what's the lesson?",
+    "GUY_1: Don't build an audit that covers 20% and then celebrate it like it's 100%.",
+    "GUY_1: Massive fraud needs three ingredients: exploitable system design, political protection, and institutional failure. This file claims Minnesota served the full buffet.",
+    "PLAYER: You okay?",
+    "GUY_1: Define 'okay.' I've watched $8B a year flow through 'trust me bro' oversight. My soul has an itemized receipt."
+  ],
+  "actions": [
+    {
+      "text": "Open Case File",
+      "url": "/cases/mn_fraud.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

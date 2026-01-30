@@ -1,0 +1,37 @@
+{
+  "id": "Pc_L_1",
+  "state": "N/A",
+  "meta": {
+    "section": "Evidence Archive",
+    "title": "Evidence Terminal [Left]",
+    "case_file": "N/A"
+  },
+  "persona": "Interactive terminal providing access to raw case files and evidence databases.",
+  "lines": [
+    "[The screen flickers to life with green phosphor text]",
+    "SYSTEM: SUBSTRATUM://EVIDENCE_ARCHIVE v2.1",
+    "SYSTEM: Authentication not required. All documented evidence is public record.",
+    "SYSTEM: Select investigation database:",
+    "[A list of available case files scrolls across the screen]",
+    "SYSTEM: Minnesota Investigation [$9B+ STOLEN]",
+    "SYSTEM: California Investigation [112 HOSPICES @ 1 ADDRESS]",
+    "SYSTEM: Texas Investigation [97% VIA MCOs]",
+    "SYSTEM: + Additional State Files Available",
+    "PLAYER: How do I access these?",
+    "SYSTEM: Each patron in the tavern holds keys to their state's complete investigation.",
+    "SYSTEM: Speak with them to unlock full access.",
+    "SYSTEM: Or access raw source documents via the archive menu."
+  ],
+  "actions": [
+    {
+      "text": "View Archive Index",
+      "url": "/cases/index.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+:root {
+  --investigation-color: #39ff14;
+  --neon-cyan: #00ffff;
+  --bg-dark: #0a0a0a;
+  --text-primary: #e6e6e6;
+  --text-muted: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg-dark);
+  min-height: 100vh;
+  font-family: 'Crimson Text', Georgia, serif;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+/* =========================
+   Top Navigation
+========================= */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 25px;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  color: var(--neon-cyan);
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-back {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--text-muted);
+  font-family: 'VT323', monospace;
+  white-space: nowrap;
+}
+
+.nav-back:hover {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+/* =========================
+   Header
+========================= */
+.investigation-header {
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0.98), rgba(10, 10, 10, 0.99));
+  border-bottom: 2px solid var(--investigation-color);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.investigation-title {
+  font-family: 'VT323', monospace;
+  font-size: 2.5rem;
+  color: var(--investigation-color);
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px var(--investigation-color);
+}
+
+.investigation-subtitle {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+/* =========================
+   Body Content
+========================= */
+.content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  font-family: 'VT323', monospace;
+  font-size: 1.8rem;
+  color: var(--neon-cyan);
+  margin: 35px 0 18px 0;
+  letter-spacing: 0.5px;
+}
+
+h3 {
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: var(--investigation-color);
+  margin: 25px 0 15px 0;
+  letter-spacing: 0.3px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1.15rem;
+}
+
+strong { color: var(--investigation-color); }
+
+ul {
+  margin: 20px 0 20px 40px;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+/* Links inside content */
+.content-wrapper a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0, 255, 255, 0.35);
+}
+
+.content-wrapper a:hover {
+  border-bottom-color: rgba(0, 255, 255, 0.8);
+}
+
+/* =========================
+   Debug Console (optional)
+========================= */
+.debug-console {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: 400px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 2px solid var(--investigation-color);
+  padding: 15px;
+  font-family: 'VT323', monospace;
+  overflow-y: auto;
+  display: none;
+  z-index: 9998;
+}
+
+.debug-console.show { display: block; }
+
+.debug-header {
+  color: var(--investigation-color);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.debug-entry {
+  margin-bottom: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--investigation-color);
+}
+
+.debug-entry.error { border-left-color: #ff6b6b; color: #ff6b6b; }
+.debug-entry.success { border-left-color: #39ff14; color: #39ff14; }
+.debug-entry.warning { border-left-color: #ffbf00; color: #ffbf00; }
+
+/* =========================
+   Mobile tweaks
+========================= */
+@media (max-width: 480px) {
+  .top-nav { padding: 12px 14px; }
+  .nav-brand { font-size: 1.15rem; }
+  .nav-back { padding: 6px 10px; font-size: 0.95rem; }
+
+  .investigation-title { font-size: 2.1rem; }
+  .content-wrapper { padding: 28px 14px; }
+
+  p { font-size: 1.08rem; }
+  ul { margin-left: 24px; }
+}

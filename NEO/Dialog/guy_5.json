@@ -1,0 +1,46 @@
+{
+  "id": "Guy_5",
+  "state": "New York",
+  "meta": {
+    "section": "New York",
+    "title": "The Cyber DME Goblin",
+    "case_file": "Newyork.txt"
+  },
+  "persona": "Vibe: techno-paranoid investigator who reads indictments for fun. Humor style: sarcastic hacker metaphors, 'everything is a shell company.' Knows big numbers, bigger laundering routes. Believes 'global cap' is a nice idea until criminals discover VPNs.",
+  "lines": [
+    "PLAYER: You look like you just crawled out of the internet.",
+    "GUY_5: I did. New York is where Medicaid fraud meets cybercrime and they exchange business cards.",
+    "PLAYER: Give me New York's scale.",
+    "GUY_5: Over 7 million enrollees. Global cap target around $31.6 billion in FY 2025. Managed care spending is enormous, especially MLTC.",
+    "PLAYER: And the fraud?",
+    "GUY_5: Operation Gold Rush. Russian-based transnational network. Over $10.6 billion in fraudulent Medicare and Medicaid claims, mostly DME.",
+    "PLAYER: How do they hide?",
+    "GUY_5: VPS servers to mask IP addresses. Nominee owners to open accounts. Shell companies. Then funds routed through banks in places like China, Singapore, and Pakistan. Crypto helps fog the trail.",
+    "PLAYER: That's… industrial.",
+    "GUY_5: Exactly. Fraud is scalable now. It comes with infrastructure.",
+    "PLAYER: Any local scams?",
+    "GUY_5: Transportation fraud. Unique Class Limo - $3.5 million. Phantom trips and trip splitting. Bribes to patients and drivers so the logs 'agree.'",
+    "PLAYER: Classic.",
+    "GUY_5: Nursing homes too. Related-party transactions: divert Medicaid funds into real estate or staffing companies the owners also control. Settlements like $45M and $12M show how big it can get.",
+    "PLAYER: Sounds like the state has oversight bodies.",
+    "GUY_5: It does - DOH, OMIG, AG MFCU. But CMS flagged a coordination gap: no established written procedure for MCOs to refer fraud directly to MFCU. Translation: fraud can get 'handled internally' and never reach prosecutors.",
+    "PLAYER: And MLTC?",
+    "GUY_5: MLTC is a fog bank. SADCs show up as a blind spot - cash bribes to get people to 'attend' centers that deliver minimal services, billed through plans.",
+    "PLAYER: Sum up New York in a sentence.",
+    "GUY_5: Massive scale plus self-reporting plus black-box algorithms equals plenty of cover for both cyber-enabled mega schemes and good old-fashioned kickbacks.",
+    "PLAYER: You okay?",
+    "GUY_5: I'm fine. I only trust three things: logs, hashes, and people who hate spreadsheets."
+  ],
+  "actions": [
+    {
+      "text": "Open Case File",
+      "url": "/cases/ny_fraud.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}

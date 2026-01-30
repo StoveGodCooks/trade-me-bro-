@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBSTRATUM | The Truth Beneath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script>
+        if (location.protocol !== 'file:' && (location.pathname === 'tavern' || location.pathname === '/tavern/')) {
+            location.replace('tavern.html');
+        }
+    </script>
+    <style>
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --bg-dark: #0a0a0a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--bg-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'VT323', monospace;
+        }
+        
+        .scene-container {
+            position: relative;
+            width: 100%;
+            max-width: 90vh;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .scene-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            display: block;
+        }
+        
+        .hotspot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .hotspot {
+            pointer-events: all;
+            cursor: pointer;
+            fill: transparent;
+            stroke: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .hotspot:hover,
+        .hotspot:focus {
+            fill: rgba(0, 255, 255, 0.15);
+            stroke: var(--neon-cyan);
+            stroke-width: 2;
+            filter: drop-shadow(0 0 8px var(--neon-cyan)) drop-shadow(0 0 15px var(--neon-cyan));
+        }
+        
+        .hotspot:focus {
+            outline: none;
+        }
+        
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loading-text {
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: var(--neon-cyan);
+            width: 0%;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        
+        /* Atmospheric Effects */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%);
+            z-index: 10;
+        }
+        
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 1px,
+                rgba(0, 0, 0, 0.1) 1px,
+                rgba(0, 0, 0, 0.1) 2px
+            );
+            z-index: 11;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading">
+        <div class="loading-text" id="loading-text">INITIALIZING NEURAL LINK...</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Main Scene -->
+    <div class="scene-container" id="scene">
+        <img 
+            src="substratum-landing.jpg" 
+            alt="Substratum - An alchemical doorway beckons" 
+            class="scene-image"
+            id="landing-image"
+        >
+        
+        <!-- SVG Hotspot Overlay - viewBox matches actual image: 1036x1036 -->
+        <svg 
+            class="hotspot-overlay" 
+            viewBox="0 0 1036 1036"
+            preserveAspectRatio="xMidYMid meet"
+            aria-label="Interactive landing page"
+        >
+            <!-- ENTER TAVERN Button - centered on the brass button in artwork -->
+            <!-- Button appears at roughly 55-60% down, centered horizontally -->
+            <polygon 
+                id="enter-btn"
+                points="350,560 686,560 686,640 350,640"
+                class="hotspot"
+                role="button"
+                tabindex="0"
+                aria-label="Enter Tavern - Click to proceed into the Substratum"
+            />
+        </svg>
+    </div>
+
+    <!-- Atmospheric Effects -->
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+
+    <script>
+        // ===========================================
+        // LOADING SYSTEM
+        // ===========================================
+        const loadingScreen = document.getElementById('loading');
+        const loadingText = document.getElementById('loading-text');
+        const loadingProgress = document.getElementById('loading-progress');
+        const landingImage = document.getElementById('landing-image');
+        
+        let progress = 0;
+        
+        // Simulate loading progress
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress > 90) progress = 90;
+            loadingProgress.style.width = progress + '%';
+        }, 100);
+        
+        // When image loads, complete the loading
+        landingImage.onload = function() {
+            clearInterval(progressInterval);
+            loadingProgress.style.width = '100%';
+            loadingText.textContent = 'LINK ESTABLISHED';
+            
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 500);
+        };
+        
+        landingImage.onerror = function() {
+            clearInterval(progressInterval);
+            loadingText.textContent = 'ERROR LOADING ASSETS...';
+            loadingText.style.color = '#ff6b6b';
+            
+            // Still allow entry after error
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+        };
+        
+        // If image already cached
+        if (landingImage.complete) {
+            clearInterval(progressInterval);
+            loadingProgress.style.width = '100%';
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 300);
+        }
+
+        // ===========================================
+        // NAVIGATION HANDLER
+        // ===========================================
+        const enterBtn = document.getElementById('enter-btn');
+        
+        function navigateToTavern() {
+            // Add a brief flash effect
+            enterBtn.style.fill = 'rgba(0, 255, 255, 0.5)';
+            enterBtn.style.filter = 'drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px #00ffff)';
+            
+            setTimeout(() => {
+                const tavernUrl = location.protocol === 'file:' ? 'tavern.html' : '/tavern.html';
+                window.location.href = tavernUrl;
+            }, 150);
+        }
+        
+        // Click handler
+        enterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigateToTavern();
+        });
+        
+        // Keyboard handler (Enter or Space)
+        enterBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navigateToTavern();
+            }
+        });
+        
+        // ===========================================
+        // DEBUG MODE (Press D to visualize hotspots)
+        // ===========================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'd' || e.key === 'D') {
+                const hotspots = document.querySelectorAll('.hotspot');
+                hotspots.forEach(h => {
+                    if (h.style.fill === 'rgba(255, 0, 0, 0.3)') {
+                        h.style.fill = 'transparent';
+                        h.style.stroke = 'transparent';
+                    } else {
+                        h.style.fill = 'rgba(255, 0, 0, 0.3)';
+                        h.style.stroke = 'red';
+                        h.style.strokeWidth = '3';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

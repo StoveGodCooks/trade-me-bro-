@@ -1,0 +1,57 @@
+{
+  "id": "Guy_3",
+  "state": "California",
+  "meta": {
+    "section": "California",
+    "title": "The Analyst",
+    "case_file": "california_fraud_report_clean.txt"
+  },
+  "persona": "Vibe: West Coast 'data-driven' cynic with a spreadsheet for every scandal. Humor style: deadpan tech sarcasm, 'this could have been an email' energy. Hyper-focused on pay-to-play, suspended safeguards, and organized networks. Treats 'oversight' like a feature flag that gets turned off at the worst time.",
+  "lines": [
+    "PLAYER: You're staring at that screen like it owes you money.",
+    "GUY_3: It does. California's case file is basically a 'how-to' guide for losing billions while sounding progressive about it.",
+    "PLAYER: What's California's big fraud story?",
+    "GUY_3: Multiple stories. That's the point. It's a whole season, not a single episode.",
+    "PLAYER: Start with the loudest one.",
+    "GUY_3: Monte Vista Pharmacy. The file says it stole $204 million in ten months by exploiting suspended safeguards during a Medi-Cal pharmacy transition. Ten. Months.",
+    "PLAYER: Two hundred four million… from one pharmacy?",
+    "GUY_3: One pharmacy with the confidence of a startup and the ethics of a scam text.",
+    "PLAYER: What else?",
+    "GUY_3: Hospice. The file says hospice providers in California grew by 1,589% while the national number declined.",
+    "PLAYER: That's… not normal.",
+    "GUY_3: Correct. And it cites a report showing 112 different hospices at the same physical address in Los Angeles County.",
+    "PLAYER: 112 at one address?",
+    "GUY_3: It's either fraud… or the world's busiest spiritual doorway.",
+    "PLAYER: Who's running these schemes?",
+    "GUY_3: The file highlights Armenian organized crime networks using Los Angeles County as a hub. And it describes laundering tactics like shell companies, real estate, and even gold.",
+    "PLAYER: Gold?",
+    "GUY_3: Yup. One case mentioned $6 million plus in gold bars and coins bought with healthcare fraud proceeds. Cash gets traced. Gold just sits there looking innocent.",
+    "PLAYER: Sounds like enforcement should be intense.",
+    "GUY_3: Enforcement exists, but the file describes reactive detection: whistleblowers and after-the-fact cases, not proactive controls.",
+    "PLAYER: Any political angle?",
+    "GUY_3: Oh, buddy. Pay-to-play is basically a subplot that ate the main plot.",
+    "GUY_3: The file cites an Open the Books finding: 979 state vendors donated $10,561,828 and received $6,201,978,173 in state payments. Roughly a 587-to-1 return.",
+    "PLAYER: That's… a great investment.",
+    "GUY_3: Exactly. Imagine your retirement account performing like that. Now imagine it's funded by taxpayers.",
+    "PLAYER: Specific examples?",
+    "GUY_3: The file describes donation patterns around major healthcare companies and contracts, including no-bid COVID-era deals and 'behested payments' - a loophole for unlimited influence donations to pet causes.",
+    "PLAYER: So safeguards get suspended, money pours out, and everyone acts surprised?",
+    "GUY_3: That's the template. Suspended prior authorization. Rapid provider growth. Weak verification. Organized networks.",
+    "PLAYER: What's the takeaway?",
+    "GUY_3: California isn't just dealing with fraud schemes. It's dealing with a system where political influence, massive scale, and 'black box' oversight make fraud feel like a predictable outcome.",
+    "PLAYER: You seem… calm about this.",
+    "GUY_3: I work in analytics. Calm is what happens when screaming doesn't compile."
+  ],
+  "actions": [
+    {
+      "text": "Open Case File",
+      "url": "/cases/ca_fraud.html",
+      "primary": true
+    },
+    {
+      "text": "Back to Tavern",
+      "url": "/tavern.html",
+      "primary": false
+    }
+  ]
+}
