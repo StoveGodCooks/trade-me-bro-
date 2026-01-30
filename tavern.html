@@ -283,6 +283,22 @@
             color: #ff6b6b;
         }
         
+        .dialogue-skip {
+            background: none;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 5px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .dialogue-skip:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
         .dialogue-content {
             font-family: 'Crimson Text', Georgia, serif;
             font-size: 1.2rem;
@@ -465,10 +481,17 @@
             outline: none;
         }
 
+        
         .scene-svg .hotspot.visited:not(:hover):not(:focus) {
-  fill: none !important;
-  stroke: none !important;
-  filter: none !important;
+         fill: none !important;
+         stroke: none !important;
+         filter: none !important;
+        }
+        
+        /* Pulse animation for case file transition */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
         }
 
     </style>
@@ -477,10 +500,10 @@
     <!-- Top Navigation -->
     <nav class="top-nav">
         <a href="./tavern.html" class="nav-brand">
-            <span>◈</span>
+            <span>â—ˆ</span>
             <span>SUBSTRATUM</span>
         </a>
-        <a href="./index.html" class="nav-exit">← Exit to Surface</a>
+        <a href="index.html" class="nav-exit">â† Exit to Surface</a>
     </nav>
 
     <!-- Main Scene -->
@@ -576,7 +599,10 @@
         <div class="dialogue-box" id="dialogue-box">
             <div class="dialogue-header">
                 <span class="dialogue-speaker" id="dialogue-speaker">THE ALCHEMIST</span>
-                <button class="dialogue-close" id="dialogue-close">✕ Close</button>
+                <div style="display: flex; gap: 10px;">
+                    <button class="dialogue-skip" id="dialogue-skip" style="display: none;">â­ Skip</button>
+                    <button class="dialogue-close" id="dialogue-close">âœ• Close</button>
+                </div>
             </div>
             <div class="dialogue-content" id="dialogue-content">
                 <!-- Dialogue text appears here via typewriter effect -->
@@ -592,7 +618,7 @@
         <div class="terminal-window">
             <div class="terminal-header">
                 <span class="terminal-title">SUBSTRATUM://EVIDENCE_ARCHIVE v2.1</span>
-                <button class="terminal-close" id="terminal-close">×</button>
+                <button class="terminal-close" id="terminal-close">Ã—</button>
             </div>
             <div class="terminal-body" id="terminal-body">
                 <!-- Terminal content loaded dynamically -->
@@ -611,9 +637,9 @@
                 dialogue: [
                     { type: 'narration', text: 'The brass-clad figure looks up from polishing a glowing vial, eyes gleaming with ancient knowledge.' },
                     { type: 'speech', text: 'Welcome, truth-seeker, to the Substratum...' },
-                    { type: 'speech', text: 'This tavern exists between worlds—where those who question gather to share what they\'ve uncovered.' },
+                    { type: 'speech', text: 'This tavern exists between worldsâ€”where those who question gather to share what they\'ve uncovered.' },
                     { type: 'speech', text: 'Each patron here carries evidence of corruption most would rather stay buried. Speak with them.' },
-                    { type: 'speech', text: 'The one from the frozen north witnessed billions vanish into foreign accounts. The ranger watched contracts renewed for companies that admitted fraud. The analyst—their data reveals patterns no one wants acknowledged.' },
+                    { type: 'speech', text: 'The one from the frozen north witnessed billions vanish into foreign accounts. The ranger watched contracts renewed for companies that admitted fraud. The analystâ€”their data reveals patterns no one wants acknowledged.' },
                     { type: 'speech', text: 'And should you seek the raw data... the terminals await.' }
                 ],
                 actions: []
@@ -621,6 +647,7 @@
             minnesota: {
                 name: 'The Frost Witness',
                 color: '#00d4ff',
+                investigationUrl: './investigation/mn_fraud.html',
                 dialogue: [
                     { type: 'speech', text: 'Minnesota. Same thing. Except the blizzard is paperwork and the snow is missing money.' },
                     { type: 'speech', text: "The case file calls it a $9+ billion Medicaid fraud scandal between 2020 and 2025. 'One of the largest documented' in U.S. history." },
@@ -640,17 +667,17 @@
                     { type: 'speech', text: "Define 'okay.' I've watched $8B a year flow through 'trust me bro' oversight. My soul has an itemized receipt." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/mn.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/mn_fraud.html', primary: true }
                 ]
             },
             texas: {
                 name: 'The Lone Star Claims Wrangler',
                 color: '#ffbf00',
+                investigationUrl: './investigation/tx_fraud.html',
                 dialogue: [
                     { type: 'speech', text: 'Partner, in Texas we do everything big. Including the fraud.' },
                     { type: 'speech', text: 'Texas Medicaid runs about a $41 billion annual system. And it routes 97% of beneficiaries through 16 Managed Care Organizations.' },
-                    { type: 'speech', text: "It's efficient at moving money. Detecting fraud is… more of a hobby." },
+                    { type: 'speech', text: "It's efficient at moving money. Detecting fraud isâ€¦ more of a hobby." },
                     { type: 'speech', text: 'The case file estimates around $4 billion in annual fraud losses. Recovery rates? Somewhere between 5% and 15% of what gets stolen.' },
                     { type: 'speech', text: "Incentives. MCOs get capitation. Higher costs can justify higher rates. Fraud inflates costs. Nobody's excited to reduce their own baseline." },
                     { type: 'speech', text: "July 2025 CMS focused review. Four big MCOs. Eight major 'observations' that read like a tutorial on how not to run program integrity." },
@@ -658,22 +685,22 @@
                     { type: 'speech', text: "State law conflicts with federal payment-suspension rules, so the Fraud Control Unit hasn't requested a single payment suspension since 2015." },
                     { type: 'speech', text: 'Yep. Imagine catching a leak and deciding the fix is to stare at it harder.' },
                     { type: 'speech', text: "No unannounced site visits. Ever, per the review. That's how you catch phantom clinics. Texas said, 'Nah, let them surprise us instead.'" },
-                    { type: 'speech', text: 'Also: no requirement to verify beneficiaries actually got the services billed. Which is… a bold approach to reality.' },
+                    { type: 'speech', text: 'Also: no requirement to verify beneficiaries actually got the services billed. Which isâ€¦ a bold approach to reality.' },
                     { type: 'speech', text: "The state OIG doesn't even track MCO referrals to the Fraud Control Unit. So the state can't tell whether MCOs are reporting fraud or just quietly denying claims and moving on." },
                     { type: 'speech', text: "One plan processed $12.8B in claims and recovered $426,467. That's 0.003%." },
                     { type: 'speech', text: "It's a rounding error wearing a cowboy hat." },
                     { type: 'speech', text: 'Amerigroup identified $26.8M over three years, recovered $5.5M. Superior identified $13.6M, recovered $3.1M. Parkland had 12 preliminary investigations and hit the 15-workday federal deadline exactly zero times.' },
                     { type: 'speech', text: 'Treat fraud as an emergency, not a paperwork mood. Staff the SIUs. Do unannounced visits. Verify services. Fix the payment-suspension conflict so the system can actually stop bleeding.' },
-                    { type: 'speech', text: "It is simple. It's just inconvenient for people who prefer profits to accountability. Texas has a long tradition of respecting… convenience." }
+                    { type: 'speech', text: "It is simple. It's just inconvenient for people who prefer profits to accountability. Texas has a long tradition of respectingâ€¦ convenience." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/texas.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/tx_fraud.html', primary: true }
                 ]
             },
             california: {
                 name: 'The Analyst',
                 color: '#39ff14',
+                investigationUrl: './investigation/ca_fraud.html',
                 dialogue: [
                     { type: 'speech', text: "It does. California's case file is basically a 'how-to' guide for losing billions while sounding progressive about it." },
                     { type: 'speech', text: "Multiple stories. That's the point. It's a whole season, not a single episode." },
@@ -681,7 +708,7 @@
                     { type: 'speech', text: 'One pharmacy with the confidence of a startup and the ethics of a scam text.' },
                     { type: 'speech', text: 'Hospice. The file says hospice providers in California grew by 1,589% while the national number declined.' },
                     { type: 'speech', text: 'Correct. And it cites a report showing 112 different hospices at the same physical address in Los Angeles County.' },
-                    { type: 'speech', text: "It's either fraud… or the world's busiest spiritual doorway." },
+                    { type: 'speech', text: "It's either fraudâ€¦ or the world's busiest spiritual doorway." },
                     { type: 'speech', text: 'The file highlights Armenian organized crime networks using Los Angeles County as a hub. And it describes laundering tactics like shell companies, real estate, and even gold.' },
                     { type: 'speech', text: 'Yup. One case mentioned $6 million plus in gold bars and coins bought with healthcare fraud proceeds. Cash gets traced. Gold just sits there looking innocent.' },
                     { type: 'speech', text: 'Enforcement exists, but the file describes reactive detection: whistleblowers and after-the-fact cases, not proactive controls.' },
@@ -694,13 +721,13 @@
                     { type: 'speech', text: "I work in analytics. Calm is what happens when screaming doesn't compile." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/california.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/ca_fraud.html', primary: true }
                 ]
             },
             illinois: {
                 name: 'The Capitation Necromancer',
                 color: '#4169e1',
+                investigationUrl: './investigation/il_fraud.html',
                 dialogue: [
                     { type: 'speech', text: "I am. Illinois literally paid managed-care premiums for dead people. I'm just the guy holding the Ouija board." },
                     { type: 'speech', text: 'HealthChoice Illinois. Near-universal managed care. Five major MCOs and a state agency trying to keep the machine from eating the manual.' },
@@ -715,19 +742,19 @@
                     { type: 'speech', text: "I'm from Illinois. Harsh is our love language." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/illinois.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/il_fraud.html', primary: true }
                 ]
             },
             'new york': {
                 name: 'The Cyber DME Goblin',
                 color: '#ff6347',
+                investigationUrl: './investigation/ny_fraud.html',
                 dialogue: [
                     { type: 'speech', text: 'I did. New York is where Medicaid fraud meets cybercrime and they exchange business cards.' },
                     { type: 'speech', text: 'Over 7 million enrollees. Global cap target around $31.6 billion in FY 2025. Managed care spending is enormous, especially MLTC.' },
                     { type: 'speech', text: 'Operation Gold Rush. Russian-based transnational network. Over $10.6 billion in fraudulent Medicare and Medicaid claims, mostly DME.' },
                     { type: 'speech', text: 'VPS servers to mask IP addresses. Nominee owners to open accounts. Shell companies. Then funds routed through banks in places like China, Singapore, and Pakistan. Crypto helps fog the trail.' },
-                    { type: 'speech', text: "That's… industrial." },
+                    { type: 'speech', text: "That'sâ€¦ industrial." },
                     { type: 'speech', text: 'Exactly. Fraud is scalable now. It comes with infrastructure.' },
                     { type: 'speech', text: 'Transportation fraud. Unique Class Limo - $3.5 million. Phantom trips and trip splitting. Bribes to patients and drivers so the logs \'agree.\'' },
                     { type: 'speech', text: 'Classic.' },
@@ -738,39 +765,39 @@
                     { type: 'speech', text: "I'm fine. I only trust three things: logs, hashes, and people who hate spreadsheets." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/newyork.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/ny_fraud.html', primary: true }
                 ]
             },
             florida: {
                 name: 'The Kickback Tour Guide',
                 color: '#ff8c00',
+                investigationUrl: './investigation/fl_fraud.html',
                 dialogue: [
                     { type: 'speech', text: "That's how Florida gets you. Sunshine outside, felony inside." },
                     { type: 'speech', text: 'Statewide Medicaid Managed Care. Mandatory managed care, over 5 million beneficiaries, 16 MCOs. Lots of subcontractors.' },
                     { type: 'speech', text: 'Complex enough to hide a marching band.' },
                     { type: 'speech', text: '2025 national takedown in South Florida: 37 defendants, $14.6 billion in alleged fraud.' },
-                    { type: 'speech', text: "That's… insane." },
+                    { type: 'speech', text: "That'sâ€¦ insane." },
                     { type: 'speech', text: 'Case example: Newtech Medical Supply billed $2.9 million for DME that never showed up. Ghost equipment. Very on-brand.' },
                     { type: 'speech', text: 'Gilead settlement: over $3 million to resolve allegations of kickbacks to push high-cost HIV drugs like Biktarvy and Genvoya via meals, travel, awards.' },
                     { type: 'speech', text: "'Educational dinners.'" },
                     { type: 'speech', text: 'Exactly. The syllabus is shrimp.' },
                     { type: 'speech', text: 'PSR fraud: a Miami operation recruited patients with kickbacks to attend unnecessary services, billed over $1.2 million.' },
                     { type: 'speech', text: "CMS review in 2025 said Florida's MCOs lacked a formal procedure to refer potential fraud to law enforcement, which violates federal requirements." },
-                    { type: 'speech', text: "So MCOs can just… keep it internal." },
+                    { type: 'speech', text: "So MCOs can justâ€¦ keep it internal." },
                     { type: 'speech', text: "They can 'investigate' and quietly move on. Also, service verification exists on paper, but the state doesn't require regular reporting of those verification results." },
                     { type: 'speech', text: 'NEMT is a classic. Subcontracting fragments the data trail. Ghost trips. Deadhead miles. Enough paperwork to paper-mache a boat.' },
                     { type: 'speech', text: 'Aggressive privatization, huge money, subcontractor layers, and referral bottlenecks. Great weather for fraud. Bring sunscreen and a subpoena.' },
                     { type: 'speech', text: "I'm not funny. I'm traumatized with good timing." }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/florida.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/fl_fraud.html', primary: true }
                 ]
             },
             colorado: {
                 name: 'The Managed Fee-for-Service Philosopher',
                 color: '#9370db',
+                investigationUrl: './investigation/co_fraud.html',
                 dialogue: [
                     { type: 'speech', text: 'I\'m from Colorado. We process disappointment at altitude.' },
                     { type: 'speech', text: 'Health First Colorado. Hybrid model: physical health is mostly fee-for-service, while RAEs handle coordination and behavioral health. Managed, but not fully.' },
@@ -785,8 +812,7 @@
                     { type: 'speech', text: 'Thank you. I practice being professionally horrified.' }
                 ],
                 actions: [
-                    { text: 'Open Case File', url: '../investigation/colorado.html', primary: true },
-                    { text: 'Back to Tavern', url: '../HTML/tavern.html', primary: false }
+                    { text: 'Open Case File', url: './investigation/co_fraud.html', primary: true }
                 ]
             },
             table1: {
@@ -794,7 +820,7 @@
                 color: '#888',
                 dialogue: [
                     { type: 'narration', text: 'A half-finished drink glows faintly. Someone left in a hurry.' },
-                    { type: 'speech', text: 'No one sits here… yet.' }
+                    { type: 'speech', text: 'No one sits hereâ€¦ yet.' }
                 ],
                 actions: []
             },
@@ -811,8 +837,8 @@
                 name: 'WHISPERING BOOTH',
                 color: '#888',
                 dialogue: [
-                    { type: 'narration', text: 'The booth hums with residual static—like a conversation still looping.' },
-                    { type: 'speech', text: 'You feel watched. Not by eyes… by systems.' }
+                    { type: 'narration', text: 'The booth hums with residual staticâ€”like a conversation still looping.' },
+                    { type: 'speech', text: 'You feel watched. Not by eyesâ€¦ by systems.' }
                 ],
                 actions: []
             }
@@ -822,28 +848,191 @@
         // TERMINAL DATA
         // ===========================================
         const TERMINAL_DATA = `
-            <div class="terminal-section">
-                <div class="terminal-section-title">▸ MINNESOTA INVESTIGATION [$9B+ STOLEN]</div>
-                <a href="./MN.txt" class="terminal-file">Complete Investigation Report</a>
-                <a href="#" class="terminal-file">Defendant Database [COMING SOON]</a>
-                <a href="#" class="terminal-file">Overseas Money Trail [COMING SOON]</a>
-            </div>
-            <div class="terminal-section">
-                <div class="terminal-section-title">▸ CALIFORNIA INVESTIGATION [112 HOSPICES @ 1 ADDRESS]</div>
-                <a href="./cali.txt" class="terminal-file">Complete Investigation Report</a>
-                <a href="#" class="terminal-file">Armenian Crime Networks [COMING SOON]</a>
-            </div>
-            <div class="terminal-section">
-                <div class="terminal-section-title">▸ TEXAS INVESTIGATION [97% VIA MCOs]</div>
-                <a href="./texas.txt" class="terminal-file">Complete Investigation Report</a>
-                <a href="#" class="terminal-file">Centene Settlement Timeline [COMING SOON]</a>
-            </div>
-            <div class="terminal-section">
-                <div class="terminal-section-title">▸ SOURCES</div>
-                <a href="#" class="terminal-file">DOJ Press Releases & Indictments</a>
-                <a href="#" class="terminal-file">Federal Court Records (PACER)</a>
-                <a href="#" class="terminal-file">State Auditor Reports</a>
-                <a href="#" class="terminal-file">CMS Program Integrity Reviews</a>
+            <div style="font-family: 'VT323', monospace; line-height: 1.6;">
+                <pre style="color: var(--neon-green); font-size: 0.85rem; margin-bottom: 20px; opacity: 0.7;">
+â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+â•‘                    SUBSTRATUM DETECTIVE TERMINAL v2.1                     â•‘
+â•‘                          CASE BRIEFING SYSTEM                             â•‘
+â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+</pre>
+
+                <div class="terminal-section">
+                    <div class="terminal-section-title">ðŸ“‹ ACTIVE INVESTIGATIONS OVERVIEW</div>
+                    <div style="padding-left: 15px; line-height: 1.8;">
+                        <p style="color: #7ec87e; margin-bottom: 10px;">
+                            <strong>STATUS:</strong> Multi-state Medicaid fraud investigation<br>
+                            <strong>CLASSIFICATION:</strong> ðŸ”´ Critical Priority | Systemic Corruption<br>
+                            <strong>TOTAL ESTIMATED LOSSES:</strong> $15B+ (2020-2025)<br>
+                            <strong>RECOVERY RATE:</strong> &lt;5% across all jurisdictions
+                        </p>
+                    </div>
+                </div>
+
+                <div class="terminal-section">
+                    <div class="terminal-section-title">ðŸ—‚ï¸ CASE FILES â€” STATE DOSSIERS</div>
+                    
+                    <div style="border-left: 3px solid #00d4ff; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #00d4ff; font-size: 1.1rem; margin-bottom: 8px;">
+                            â„ï¸ <strong>MINNESOTA</strong> â€” "The Frozen Assets Case"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> Feeding Our Future network, 150+ defendants, organized fraud rings<br>
+                            <strong>WHAT:</strong> $9B+ stolen via fake nonprofits & MCO audit gaps<br>
+                            <strong>WHEN:</strong> 2020-2025 | Peak: 2021-2022<br>
+                            <strong>WHERE:</strong> Money laundered to Somalia, Kenya, Turkey, Maldives, China<br>
+                            <strong>HOW:</strong> Exploited 80% MCO channel with self-auditing loophole<br>
+                            <strong>KEY EVIDENCE:</strong> 480+ whistleblower complaints suppressed | Political protection documented<br>
+                            <strong>THREAT LEVEL:</strong> ðŸ”´ Systemic | Recovery: &lt;1%
+                        </div>
+                        <a href="./investigation/mn_fraud.html" class="terminal-file">â†’ Access Full Minnesota Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #ffbf00; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #ffbf00; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸ¤  <strong>TEXAS</strong> â€” "The MCO Black Box Case"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> 16 Managed Care Organizations controlling 97% of beneficiaries<br>
+                            <strong>WHAT:</strong> $4B annual losses via understaffed oversight & compliance failures<br>
+                            <strong>WHEN:</strong> Ongoing | CMS Review: July 2025<br>
+                            <strong>WHERE:</strong> Statewide | $41B/year Medicaid system<br>
+                            <strong>HOW:</strong> No unannounced site visits, zero payment suspensions since 2015, phantom clinic epidemic<br>
+                            <strong>KEY EVIDENCE:</strong> CMS identified 8 major program integrity failures | One MCO: 0.003% recovery rate<br>
+                            <strong>THREAT LEVEL:</strong> ðŸ”´ Critical | Structural blindness by design
+                        </div>
+                        <a href="./investigation/tx_fraud.html" class="terminal-file">â†’ Access Full Texas Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #39ff14; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #39ff14; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸŒ´ <strong>CALIFORNIA</strong> â€” "The Golden State Grift"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> Armenian crime networks, 112 hospices at 1 address, pharmacy cartels<br>
+                            <strong>WHAT:</strong> $204M stolen in 10 months (Monte Vista) + hospice fraud explosion<br>
+                            <strong>WHEN:</strong> 2020-2025 | Hospice growth: +1,589% while national declined<br>
+                            <strong>WHERE:</strong> Los Angeles County hub | Money laundered via gold bars & real estate<br>
+                            <strong>HOW:</strong> Suspended safeguards during pharmacy transition + pay-to-play contracts ($6B+ ROI)<br>
+                            <strong>KEY EVIDENCE:</strong> 979 vendors donated $10.5M, received $6.2B in contracts (587:1 return)<br>
+                            <strong>THREAT LEVEL:</strong> ðŸ”´ Organized Crime Nexus | Systemic corruption
+                        </div>
+                        <a href="./investigation/ca_fraud.html" class="terminal-file">â†’ Access Full California Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #ff8c00; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #ff8c00; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸ–ï¸ <strong>FLORIDA</strong> â€” "The Sunshine Schemes"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> Centene Corporation, MCO networks, HIV medication fraud rings<br>
+                            <strong>WHAT:</strong> Billions lost via PBM conflicts, spread pricing, HIV med schemes<br>
+                            <strong>WHEN:</strong> 2013-present | Major settlements 2020-2024<br>
+                            <strong>WHERE:</strong> Statewide managed care system<br>
+                            <strong>HOW:</strong> Pharmacy middlemen markup schemes, prior authorization abuse, fake prior auth rings<br>
+                            <strong>KEY EVIDENCE:</strong> Centene $215M settlement for PBM conflicts | Criminal HIV med fraud cases<br>
+                            <strong>THREAT LEVEL:</strong> ðŸŸ¡ Active | Corporate-level exploitation
+                        </div>
+                        <a href="./investigation/fl_fraud.html" class="terminal-file">â†’ Access Full Florida Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #9370db; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #9370db; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸ”ï¸ <strong>COLORADO</strong> â€” "The Altitude Paradox"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> Kaiser Permanente, Premier Medical, Gainwell/HMS (auditor-processor merger)<br>
+                            <strong>WHAT:</strong> $608M+ settlements for risk upcoding & genetic testing kickbacks<br>
+                            <strong>WHEN:</strong> Ongoing cases | Major settlements 2024-2025<br>
+                            <strong>WHERE:</strong> Hybrid fee-for-service/RAE model<br>
+                            <strong>HOW:</strong> Risk adjustment fraud + conflict of interest (claims processor owns auditor)<br>
+                            <strong>KEY EVIDENCE:</strong> State failed to obtain conflict disclosures post-Gainwell/HMS merger<br>
+                            <strong>THREAT LEVEL:</strong> ðŸŸ¡ Structural Conflict | Detection-but-no-deterrence model
+                        </div>
+                        <a href="./investigation/co_fraud.html" class="terminal-file">â†’ Access Full Colorado Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #4169e1; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #4169e1; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸ—½ <strong>NEW YORK</strong> â€” "The Empire State Paradox"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> Health insurance giants, pharmacy networks, organized fraud rings<br>
+                            <strong>WHAT:</strong> Billions in managed care vulnerabilities + aggressive enforcement<br>
+                            <strong>WHEN:</strong> Ongoing | Case file under development<br>
+                            <strong>WHERE:</strong> Largest Medicaid program in U.S. ($90B+ annually)<br>
+                            <strong>HOW:</strong> Scale creates complexity; enforcement vs. prevention balance<br>
+                            <strong>THREAT LEVEL:</strong> ðŸŸ¡ Active Monitoring
+                        </div>
+                        <a href="./investigation/ny_fraud.html" class="terminal-file">â†’ Access Full New York Investigation</a>
+                    </div>
+
+                    <div style="border-left: 3px solid #ff6347; padding-left: 15px; margin: 15px 0;">
+                        <div style="color: #ff6347; font-size: 1.1rem; margin-bottom: 8px;">
+                            ðŸŒ¾ <strong>ILLINOIS</strong> â€” "The Heartland Hole"
+                        </div>
+                        <div style="color: #7ec87e; padding-left: 20px; line-height: 1.7;">
+                            <strong>WHO:</strong> MCO networks, pharmacy fraud operations<br>
+                            <strong>WHAT:</strong> Investigation in progress â€” managed care audit gaps identified<br>
+                            <strong>WHEN:</strong> Active case development<br>
+                            <strong>WHERE:</strong> Statewide MCO-heavy system<br>
+                            <strong>HOW:</strong> Similar patterns to Minnesota/Texas/California<br>
+                            <strong>THREAT LEVEL:</strong> ðŸŸ¡ Under Investigation
+                        </div>
+                        <a href="./investigation/il_fraud.html" class="terminal-file">â†’ Access Full Illinois Investigation</a>
+                    </div>
+                </div>
+
+                <div class="terminal-section">
+                    <div class="terminal-section-title">ðŸ” PATTERN ANALYSIS â€” CROSS-STATE FINDINGS</div>
+                    <div style="padding-left: 15px; color: #7ec87e; line-height: 1.8;">
+                        <p><strong>Common Exploit Vectors:</strong></p>
+                        <ul style="list-style: none; padding-left: 20px;">
+                            <li>â†’ MCO self-auditing creates accountability vacuum</li>
+                            <li>â†’ Political donations correlate with contract awards (documented 587:1 ROI)</li>
+                            <li>â†’ Whistleblower suppression enables prolonged fraud</li>
+                            <li>â†’ International money laundering infrastructure (gold, real estate, crypto)</li>
+                            <li>â†’ Phantom provider networks operate for years undetected</li>
+                            <li>â†’ Recovery rates consistently &lt;5% even after detection</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Systemic Vulnerabilities:</strong></p>
+                        <ul style="list-style: none; padding-left: 20px;">
+                            <li>âš ï¸ No federal requirement for independent MCO audits</li>
+                            <li>âš ï¸ Payment suspension authority legally blocked in multiple states</li>
+                            <li>âš ï¸ Audit contractors paid on findings, not recoveries (perverse incentive)</li>
+                            <li>âš ï¸ Claims processors owning audit firms (vertical integration conflict)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="terminal-section">
+                    <div class="terminal-section-title">ðŸ“š SOURCE DOCUMENTATION</div>
+                    <div style="padding-left: 15px;">
+                        <a href="./investigation/UNIFIED_MEDICAID_FRAUD_INVESTIGATION_REPORT.txt" class="terminal-file">â†’ Master Case File â€” Unified Investigation Report</a>
+                        <a href="./investigation/comparative analysis of New York, Colorado, Florida, and Illinois.txt" class="terminal-file">â†’ Comparative Analysis â€” Multi-State Patterns</a>
+                        <div style="margin-top: 12px; color: #7ec87e; font-size: 0.95rem; opacity: 0.8;">
+                            <p>All evidence sourced from: DOJ indictments, federal court records (PACER), 
+                            state auditor reports, CMS program integrity reviews, OIG investigations, 
+                            and public regulatory filings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; padding: 15px; border: 1px solid rgba(57, 255, 20, 0.3); background: rgba(57, 255, 20, 0.05);">
+                    <div style="color: var(--neon-green); font-size: 1rem; margin-bottom: 10px;">
+                        ðŸ’¡ <strong>DETECTIVE'S NOTE:</strong>
+                    </div>
+                    <div style="color: #7ec87e; font-size: 0.95rem; line-height: 1.6;">
+                        Each patron in the Substratum Tavern carries firsthand knowledge of their state's 
+                        investigation. Speak with them for narrative context and strategic insights. 
+                        The evidence speaks for itself, but the witnesses reveal the patterns others refuse to see.
+                    </div>
+                </div>
+
+                <pre style="color: var(--neon-green); font-size: 0.75rem; margin-top: 25px; opacity: 0.5; text-align: center;">
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        "In systems designed to fail, success looks like fraud."
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+</pre>
             </div>
         `;
 
@@ -884,10 +1073,12 @@
             content: document.getElementById('dialogue-content'),
             actions: document.getElementById('dialogue-actions'),
             closeBtn: document.getElementById('dialogue-close'),
+            skipBtn: document.getElementById('dialogue-skip'),
             
             currentCharacter: null,
             dialogueIndex: 0,
             typewriterTimeout: null,
+            isTyping: false,
             
             open(characterId) {
                 const character = CHARACTERS[characterId];
@@ -952,24 +1143,52 @@
                 });
             },
             
-            typewrite(element, text, callback, speed = 25) {
+            typewrite(element, text, callback, speed = 10) {
                 let i = 0;
                 clearTimeout(this.typewriterTimeout);
+                this.isTyping = true;
+                
+                // Show skip button during typewriter
+                if (this.skipBtn) {
+                    this.skipBtn.style.display = 'block';
+                }
                 
                 const type = () => {
-                    if (i < text.length) {
+                    if (i < text.length && this.isTyping) {
                         element.textContent += text.charAt(i);
                         i++;
                         this.typewriterTimeout = setTimeout(type, speed);
-                    } else if (callback) {
-                        callback();
+                    } else {
+                        // Typing finished or skipped
+                        if (i < text.length) {
+                            // Was skipped - complete the text instantly
+                            element.textContent = text;
+                        }
+                        this.isTyping = false;
+                        if (this.skipBtn) {
+                            this.skipBtn.style.display = 'none';
+                        }
+                        if (callback) {
+                            callback();
+                        }
                     }
                 };
                 type();
             },
             
+            skipTypewriter() {
+                this.isTyping = false;
+                clearTimeout(this.typewriterTimeout);
+                // Jump to end state immediately
+                this.dialogueIndex = this.currentCharacter.dialogue.length;
+                this.showActions();
+            },
+            
             showActions() {
                 this.actions.innerHTML = '';
+                
+                // Check if character has investigation URL for auto-redirect
+                const hasInvestigation = this.currentCharacter.investigationUrl;
                 
                 if (this.currentCharacter.actions && this.currentCharacter.actions.length > 0) {
                     this.currentCharacter.actions.forEach(action => {
@@ -981,23 +1200,42 @@
                     });
                 }
                 
-                // Always add close button
+                // Add close button
                 const closeBtn = document.createElement('button');
                 closeBtn.className = 'dialogue-btn';
                 closeBtn.textContent = 'Close';
                 closeBtn.onclick = () => this.close();
                 this.actions.appendChild(closeBtn);
+                
+                // Auto-redirect to investigation file after dialog completes (if character has one)
+                if (hasInvestigation) {
+                    // Show immersive transition message
+                    const transitionMsg = document.createElement('div');
+                    transitionMsg.style.cssText = 'margin-top: 20px; padding: 15px; border: 1px solid ' + this.currentCharacter.color + '; background: rgba(0,0,0,0.5); text-align: center; animation: pulse 1.5s ease-in-out;';
+                    transitionMsg.innerHTML = '<span style="color: ' + this.currentCharacter.color + '; font-size: 1.1rem;">ðŸ“‚ Opening case file... ðŸ”</span>';
+                    this.content.appendChild(transitionMsg);
+                    
+                    // Auto-redirect after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = this.currentCharacter.investigationUrl;
+                    }, 2000);
+                }
             },
             
             close() {
                 clearTimeout(this.typewriterTimeout);
+                this.isTyping = false;
                 this.overlay.classList.remove('active');
                 this.box.classList.remove('active');
                 this.currentCharacter = null;
+                if (this.skipBtn) {
+                    this.skipBtn.style.display = 'none';
+                }
             },
             
             init() {
                 this.closeBtn.addEventListener('click', () => this.close());
+                this.skipBtn.addEventListener('click', () => this.skipTypewriter());
                 this.overlay.addEventListener('click', (e) => {
                     if (e.target === this.overlay) this.close();
                 });
@@ -1151,7 +1389,7 @@ function initHotspots() {
             
             // H for help
             if (e.key === 'h' || e.key === 'H') {
-                alert('SUBSTRATUM CONTROLS:\n\n• Click characters to speak with them\n• Click terminals to access evidence archive\n• Press D to show/hide hotspots\n• Press ESC to close dialogs\n• Press Ctrl+Shift+R to reset progress');
+                alert('SUBSTRATUM CONTROLS:\n\nâ€¢ Click characters to speak with them\nâ€¢ Click terminals to access evidence archive\nâ€¢ Press D to show/hide hotspots\nâ€¢ Press ESC to close dialogs\nâ€¢ Press Ctrl+Shift+R to reset progress');
             }
         });
 
@@ -1169,5 +1407,4 @@ function initHotspots() {
         });
     </script>
 </body>
-
 </html>

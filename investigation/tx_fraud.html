@@ -113,8 +113,8 @@
 </head>
 <body>
     <nav class="top-nav">
-        <a href="../index.html" class="nav-brand">◈ SUBSTRATUM</a>
-        <a href="../tavern.html" class="nav-back">← Return to Tavern</a>
+        <a href="../index.html" class="nav-brand">â—ˆ SUBSTRATUM</a>
+        <a href="../tavern.html" class="nav-back">â† Return to Tavern</a>
     </nav>
     
     <div class="investigation-header">
@@ -126,7 +126,7 @@
         <h2>EXECUTIVE SUMMARY</h2>
         <p>Texas replicates the identical fraud patterns, oversight failures, and political protection mechanisms documented in Minnesota and California, with an estimated <strong>$4 billion in annual fraud losses</strong> against a paltry <strong>5-15% recovery rate</strong>.</p>
         
-        <p>The state's $41 billion Medicaid managed care system—channeling <strong>97% of beneficiaries through 16 MCOs</strong>—demonstrates the same structural vulnerabilities enabling organized fraud networks to extract billions while political connections shield both fraudsters and negligent MCOs from accountability.</p>
+        <p>The state's $41 billion Medicaid managed care systemâ€”channeling <strong>97% of beneficiaries through 16 MCOs</strong>â€”demonstrates the same structural vulnerabilities enabling organized fraud networks to extract billions while political connections shield both fraudsters and negligent MCOs from accountability.</p>
 
         <h2>MCO OVERSIGHT COLLAPSE</h2>
         <p><strong>CMS July 2025 Review Found:</strong></p>
@@ -198,7 +198,7 @@
 
         <h2>INSTITUTIONAL FAILURES</h2>
         <h3>MCO Special Investigative Units</h3>
-        <p><strong>Wellpoint Texas</strong> (processing $12.8B in claims) recovered only <strong>$426,467</strong>—a recovery rate of <strong>0.003%</strong>.</p>
+        <p><strong>Wellpoint Texas</strong> (processing $12.8B in claims) recovered only <strong>$426,467</strong>â€”a recovery rate of <strong>0.003%</strong>.</p>
         
         <h3>State Auditor Findings</h3>
         <p>Evaluation errors in <strong>all 28 procurements</strong> totaling <strong>$4.6 billion</strong>. For 5 procurements exceeding $3B, auditor couldn't confirm HHSC awarded contracts to best applicants.</p>
@@ -246,6 +246,47 @@
       <div id="debug-output"></div>
     </div>
 
-<script src="/cases/case.js"></script>
+    <script>
+        const DEBUG = {
+            logs: [],
+            init() {
+                this.log('✓ Texas investigation loaded', 'success');
+                this.checkIntegrity();
+                this.monitorErrors();
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'd' || e.key === 'D') {
+                        document.getElementById('debug-console').classList.toggle('show');
+                    }
+                });
+            },
+            log(msg, type = 'info') {
+                this.logs.push({msg, type, time: new Date().toLocaleTimeString()});
+                this.render();
+            },
+            checkIntegrity() {
+                const checks = [
+                    {name: 'Navigation', test: () => document.querySelector('.nav-brand')},
+                    {name: 'Content', test: () => document.querySelector('.content-wrapper')},
+                    {name: 'Headers', test: () => document.querySelectorAll('h2').length >= 6}
+                ];
+                checks.forEach(c => {
+                    if (c.test()) this.log(`✓ ${c.name}`, 'success');
+                    else this.log(`✗ ${c.name} FAILED`, 'error');
+                });
+            },
+            monitorErrors() {
+                window.addEventListener('error', (e) => {
+                    this.log(`ERROR: ${e.message}`, 'error');
+                });
+            },
+            render() {
+                document.getElementById('debug-output').innerHTML = this.logs.map(l => 
+                    `<div class="debug-entry ${l.type}"><small>${l.time}</small><br>${l.msg}</div>`
+                ).join('');
+            }
+        };
+        document.addEventListener('DOMContentLoaded', () => DEBUG.init());
+    </script>
+
 </body>
 </html>
