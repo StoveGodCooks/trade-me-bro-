@@ -70,4 +70,5 @@ To deploy:
 ## 📜 License
 
 This project is private and not licensed for redistribution.  
-All assets, code, and narrative content are © Charles Hubbard.
+All assets, code, and narrative content are © StoveGod
+
