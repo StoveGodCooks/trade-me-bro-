@@ -1,74 +1,45 @@
-# SUBSTRATUM | The Truth Beneath
+# Trade Me Bro — Mock Retail Portfolio Site
 
-An immersive, pixel-art web experience built for mystery, exploration, and modular storytelling.  
-This project is designed to run on Neocities and is structured for clean scalability, dialog-driven interaction, and investigative depth.
+A full-stack mock retail web app for portfolio use, featuring:
+- A storefront frontend
+- An Express backend
+- Stripe test checkout integration
 
----
+## Tech Stack
+- **Frontend:** HTML, CSS, Vanilla JavaScript
+- **Backend:** Node.js + Express
+- **Payments:** Stripe Checkout (test mode)
 
-## 🌐 Live Site  
-**https://substratum.neocities.org**
+## Setup
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Copy environment template:
+   ```bash
+   cp .env.example .env
+   ```
+3. Add your Stripe test keys in `.env`:
+   - `STRIPE_SECRET_KEY` from Stripe Developers dashboard
+   - `STRIPE_PUBLISHABLE_KEY` from Stripe Developers dashboard
+4. Start the app:
+   ```bash
+   npm start
+   ```
+5. Visit `http://localhost:4242`
 
----
+## Stripe Test Cards
+Use Stripe's test card:
+- Card: `4242 4242 4242 4242`
+- Any future expiry date
+- Any 3-digit CVC
+- Any ZIP
 
-## 📁 Project Structure
+## Project Structure
+- `server.js` — API + static file hosting
+- `public/index.html` — storefront page
+- `public/style.css` — page styling
+- `public/app.js` — product rendering + checkout request
 
-/
-├── index.html                              # Entry point — loads the landing screen
-├── homescreen.html                  # Optional alternate entry or debug screen
-├── tavern.html                          # Main interactive scene
-├── tavern_debug.html       # Debug/testing variant of tavern scene
-├── substratum-landing.jpg    # Background image for landing
-├── tavern-scene.png                # Background image for tavern
-├── Dialog/                 # Contains all dialog JSON files
-├── investigation/          # Contains investigative case files (.txt)
-
-Code
-
----
-
-## 🧠 Design Philosophy
-
-- **Modular World Engine** — Each scene is self-contained and loads its own dialog and assets.
-- **Pixel-Perfect UI** — SVG hotspots and overlays are aligned precisely with artwork.
-- **Accessible Navigation** — Keyboard and screen reader support via `role="button"` and `aria-label`.
-- **Lore-Driven Structure** — Dialog and investigation folders reflect narrative depth and branching logic.
-
----
-
-## 🔧 Development Notes
-
-- All fetch paths are **root-relative** (e.g., `/Dialog/intro.json`) to match Neocities deployment.
-- No `NEO/` folder is used on the live site — GitHub structure is flattened to match.
-- Codex and Copilot are used for code review, debugging, and prompt-based development.
-- Dialog files follow a strict JSON format for compatibility with the SUBSTRATUM loader.
-
----
-
-## 🚀 Getting Started
-
-To run locally:
-1. Clone the repo
-2. Open `index.html` in a browser
-3. Ensure all assets are in the root folder (no subfolder nesting unless mirrored)
-
-To deploy:
-- Upload files directly to Neocities root
-- Maintain folder structure for `Dialog/` and `investigation/`
-
----
-
-## 🛠 Tools Used
-
-- HTML5 / CSS3 / JavaScript
-- SVG for interactive overlays
-- GitHub for version control
-- Neocities for hosting
-- Codex + Copilot for AI-assisted development
-
----
-
-## 📜 License
-
-This project is private and not licensed for redistribution.  
-All assets, code, and narrative content are © StoveGod
-
+## Important
+This is a **mock** portfolio project. It uses Stripe **test mode** and does not process real payments.
